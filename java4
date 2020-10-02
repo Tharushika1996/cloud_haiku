@@ -1,0 +1,35 @@
+
+
+class CreditCard {
+   private static CreditCard mysingleton;
+   private CreditCard() {
+   }
+   public static CreditCard getInstance() {
+       if (mysingleton == null) {
+           mysingleton = new CreditCard();
+       }
+       return mysingleton;
+   }
+   public boolean validatePin(String cardno, int code) {
+       if (cardno.length() == 16 && code % 3 == 0)
+          return true;
+       else
+          return false;
+   }
+
+  }
+
+
+class MainApp {
+   public static void main(String args[]) {
+      CreditCard mobj1, mobj2;
+      mobj1 = CreditCard.getInstance();
+      mobj2 = CreditCard.getInstance();
+      System.out.println("Pin is " + mobj1.validatePin("1234567890123456",21));
+      if (mobj1 == mobj2)
+         System.out.println("Objects are the Same");
+      else 
+         System.out.println("Objects are different");
+     
+   }
+}
